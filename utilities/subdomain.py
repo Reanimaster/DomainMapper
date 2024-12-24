@@ -102,8 +102,8 @@ base_url = get_subdomain_url()  # Вызов функции для получе�
 domains = parse_all_pages(base_url)
 
 # Запись результата в файл
-with open('result.txt', 'w') as file:
+with open('tmdb.txt', 'w') as file:
     for domain in sorted(domains):  # Сортируем домены перед записью
         file.write(f"{domain}\n")
 
-print(f"Найдено {len(domains)} A записей. \nРезультаты сохранены в result.txt.")
+print(f"Найдено {len(domains)} A записей. \nРезультаты сохранены в tmdb.txt.")

@@ -88,8 +88,8 @@ async def verify_all_domains(domain_list, dns_servers):
     return verified_domains
 
 
-# Чтение доменов из файла result.txt
-with open('result.txt', 'r') as file:
+# Чтение доменов из файла tmdb.txt
+with open('tmdb.txt', 'r') as file:
     domain_list = [line.strip() for line in file.readlines()]
 
 # Запуск асинхронной проверки доменов
