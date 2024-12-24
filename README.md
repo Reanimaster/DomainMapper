@@ -3,25 +3,25 @@
   <summary>Что нового (нажать, чтобы открыть)</summary>
 
 - Добавлен сервис xBox. Запрос @Deni5c
-- Запуск в докере. Запрос [Запрос @andrejs82git](https://github.com/Ground-Zerro/DomainMapper/issues/21), [Реализация @MrEagle123](https://github.com/Ground-Zerro/DomainMapper/issues/21#issuecomment-2509565392)
-- Опция в config.ini: не добавлять comment="%SERVICE_NAME%" при сохранении IP-адресов в mikrotik формате. [Запрос @ITNetSystem](https://github.com/Ground-Zerro/DomainMapper/issues/45) 
-- Изменена кодиовка файла результатов на UTF-8 без BOM. [Запрос @Savanture](https://github.com/Ground-Zerro/DomainMapper/issues/54) 
-- [Конвертер маршутов](https://github.com/Ground-Zerro/DomainMapper/tree/develop/utilities) как отдельная утилита. [Запрос @Andrey999r](https://github.com/Ground-Zerro/DomainMapper/discussions/43) 
-- Добавлен сервис Jetbrains. [Запрос @SocketSomeone](https://github.com/Ground-Zerro/DomainMapper/issues/40)
-- Добавлен сервис Discord. [Запрос @AHuMex](https://github.com/Ground-Zerro/DomainMapper/issues/38)
-- [Комбинированный режим объединения IP-адресов в подсеть.](https://github.com/Ground-Zerro/DomainMapper/issues/36)
-- Возможность загрузки списков сервисов и DNS-серверов из локального файла. [Запрос @Noksa](https://github.com/Ground-Zerro/DomainMapper/issues/26) 
-- Вспомагательные [утилиты](https://github.com/Ground-Zerro/DomainMapper/tree/develop/utilities) для поиска субдоменов.
-- Добавлен сервис Twitch. [Запрос @shevernitskiy](https://github.com/Ground-Zerro/DomainMapper/issues/31)
-- Добавлен Yandex DNS сервер. [Запрос @Noksa](https://github.com/Ground-Zerro/DomainMapper/issues/26)
+- Запуск в докере. Запрос [Запрос @andrejs82git](https://github.com/Reanimaster/DomainMapper/issues/21), [Реализация @MrEagle123](https://github.com/Reanimaster/DomainMapper/issues/21#issuecomment-2509565392)
+- Опция в config.ini: не добавлять comment="%SERVICE_NAME%" при сохранении IP-адресов в mikrotik формате. [Запрос @ITNetSystem](https://github.com/Reanimaster/DomainMapper/issues/45) 
+- Изменена кодиовка файла результатов на UTF-8 без BOM. [Запрос @Savanture](https://github.com/Reanimaster/DomainMapper/issues/54) 
+- [Конвертер маршутов](https://github.com/Reanimaster/DomainMapper/tree/develop/utilities) как отдельная утилита. [Запрос @Andrey999r](https://github.com/Reanimaster/DomainMapper/discussions/43) 
+- Добавлен сервис Jetbrains. [Запрос @SocketSomeone](https://github.com/Reanimaster/DomainMapper/issues/40)
+- Добавлен сервис Discord. [Запрос @AHuMex](https://github.com/Reanimaster/DomainMapper/issues/38)
+- [Комбинированный режим объединения IP-адресов в подсеть.](https://github.com/Reanimaster/DomainMapper/issues/36)
+- Возможность загрузки списков сервисов и DNS-серверов из локального файла. [Запрос @Noksa](https://github.com/Reanimaster/DomainMapper/issues/26) 
+- Вспомагательные [утилиты](https://github.com/Reanimaster/DomainMapper/tree/develop/utilities) для поиска субдоменов.
+- Добавлен сервис Twitch. [Запрос @shevernitskiy](https://github.com/Reanimaster/DomainMapper/issues/31)
+- Добавлен Yandex DNS сервер. [Запрос @Noksa](https://github.com/Reanimaster/DomainMapper/issues/26)
 - Опция в config.ini: Отключить отображение сведений о загруженой конфигурации.
-- Передача имени конфигурационного файла ключом в терминале/командной строке. [Запрос @Noksa](https://github.com/Ground-Zerro/DomainMapper/issues/25)
-- Добавлен сервис Github Copilot. [Запрос @aspirisen](https://github.com/Ground-Zerro/DomainMapper/issues/23)
-- Keenetic CLI формат сохранения. [Запрос @vchikalkin](https://github.com/Ground-Zerro/DomainMapper/pull/20)
-- Wireguard формат сохранения. [Запрос @sanikroot](https://github.com/Ground-Zerro/DomainMapper/issues/18)
-- Агрегация маршрутов до /24, /16. [Запрос @sergeeximius](https://github.com/Ground-Zerro/DomainMapper/issues/8)
-- OVPN формат сохранения. [Запрос @SonyLo](https://github.com/Ground-Zerro/DomainMapper/pull/13)
-- Mikrotik формат сохранения. [Запрос @Shaman2010](https://github.com/Ground-Zerro/DomainMapper/pull/9)
+- Передача имени конфигурационного файла ключом в терминале/командной строке. [Запрос @Noksa](https://github.com/Reanimaster/DomainMapper/issues/25)
+- Добавлен сервис Github Copilot. [Запрос @aspirisen](https://github.com/Reanimaster/DomainMapper/issues/23)
+- Keenetic CLI формат сохранения. [Запрос @vchikalkin](https://github.com/Reanimaster/DomainMapper/pull/20)
+- Wireguard формат сохранения. [Запрос @sanikroot](https://github.com/Reanimaster/DomainMapper/issues/18)
+- Агрегация маршрутов до /24, /16. [Запрос @sergeeximius](https://github.com/Reanimaster/DomainMapper/issues/8)
+- OVPN формат сохранения. [Запрос @SonyLo](https://github.com/Reanimaster/DomainMapper/pull/13)
+- Mikrotik формат сохранения. [Запрос @Shaman2010](https://github.com/Reanimaster/DomainMapper/pull/9)
 
 </details>
 
@@ -99,7 +99,7 @@
 Torrent Truckers: platforms/dns-ttruckers.lst
 Search engines: dns-search-engines.txt
 Twitch: platforms/service/dns-twitch.txt
-Adobe: https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/develop/platforms/dns-adobe.txt
+Adobe: https://raw.githubusercontent.com/Reanimaster/DomainMapper/develop/platforms/dns-adobe.txt
 ```
 
 Для включения загрузки списка DNS-серверов из локального файла `dnsdb`, укажите `localdns = yes` в config.ini.
@@ -153,7 +153,7 @@ arena.openai.com
   <summary>Запуск в Docker (нажать, чтобы открыть)</summary>
 
 ```
-curl -L -s "https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/refs/heads/develop/dm-docker.sh" > /tmp/dm-docker.sh && chmod +x /tmp/dm-docker.sh && sh /tmp/dm-docker.sh
+curl -L -s "https://raw.githubusercontent.com/Reanimaster/DomainMapper/refs/heads/develop/dm-docker.sh" > /tmp/dm-docker.sh && chmod +x /tmp/dm-docker.sh && sh /tmp/dm-docker.sh
 ```
 </details>
 
@@ -161,11 +161,11 @@ curl -L -s "https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/refs/hea
 <details>
   <summary>Для пользователей Windows, не знающих "как", но кому "очень нужно" (нажать, чтобы открыть)</summary>
 
-- Загляните в директорию [Windows](https://github.com/Ground-Zerro/DomainMapper/tree/develop/Windows) репозитория.
+- Загляните в директорию [Windows](https://github.com/Reanimaster/DomainMapper/tree/develop/Windows) репозитория.
 </details>
 
 
 ##### Протестировано в Ubuntu 20.04, macOS Sonoma и Windows 10/11
 
 ## ВАЖНО:
-Использование сделанных "кем-то", а не Вами лично IP-листов и готовых файлов марштутов - **плохая идея** [ЖМИ](https://github.com/Ground-Zerro/DomainMapper/discussions/50)
+Использование сделанных "кем-то", а не Вами лично IP-листов и готовых файлов марштутов - **плохая идея** [ЖМИ](https://github.com/Reanimaster/DomainMapper/discussions/50)
