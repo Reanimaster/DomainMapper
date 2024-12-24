@@ -24,7 +24,7 @@ fi
 # Клонируем репозиторий, если его нет
 if [ ! -d "./DomainMapper" ]; then
     echo "Клонируем репозиторий DomainMapper..."
-    git clone https://github.com/Ground-Zerro/DomainMapper.git
+    git clone https://github.com/Reanimaster/DomainMapper.git
 else
     echo "Репозиторий DomainMapper уже клонирован."
 fi

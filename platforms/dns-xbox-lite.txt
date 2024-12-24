@@ -1,0 +1,2 @@
+xsts.auth.xboxlive.com
+xsts.auth.xboxlive.com.akadns.net

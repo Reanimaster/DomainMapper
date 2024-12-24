@@ -1,5 +1,0 @@
-themoviedb.org
-tmdb.org
-image.tmdb.org
-api.themoviedb.org
-tmdb-image-prod.b-cdn.net

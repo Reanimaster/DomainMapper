@@ -47,8 +47,9 @@ def read_config(cfg_file):
         if 'DomainMapper' in config:
             config = config['DomainMapper']
         service = config.get('service') or ''
+        services = [f"{s.strip().replace(' ', '_').lower()}.txt" for s in service.split(',')]
         request_limit = int(config.get('threads') or 20)
-        filename = config.get('filename') or 'domain-ip-resolve.txt'
+        filename = config.get('filename') or services
         cloudflare = config.get('cloudflare') or ''
         filetype = config.get('filetype') or ''
         gateway = config.get('gateway') or ''
@@ -64,30 +65,44 @@ def read_config(cfg_file):
 
         if cfginfo in ['yes', 'y']:
             print(f"{yellow(f'Загружена конфигурация из {cfg_file}:')}")
-            print(f"{Style.BRIGHT}Сервисы для проверки:{Style.RESET_ALL} {service if service else 'спросить у пользователя'}")
-            print(f"{Style.BRIGHT}Использовать DNS сервер:{Style.RESET_ALL} {dns_server_indices if dns_server_indices else 'спросить у пользователя'}")
-            print(f"{Style.BRIGHT}Количество одновременных запросов к одному DNS серверу:{Style.RESET_ALL} {request_limit}")
-            print(f"{Style.BRIGHT}Фильтрация IP-адресов Cloudflare:{Style.RESET_ALL} {'включена' if cloudflare in ['y', 'yes'] else 'вЫключена' if cloudflare in ['n', 'no'] else 'спросить у пользователя'}")
-            print(f"{Style.BRIGHT}Агрегация IP-адресов:{Style.RESET_ALL} {'mix режим /24 (255.255.255.0) + /32 (255.255.255.255)' if subnet == 'mix' else 'до /16 подсети (255.255.0.0)' if subnet == '16' else 'до /24 подсети (255.255.255.0)' if subnet == '24' else 'вЫключена' if subnet in ['n', 'no'] else 'спросить у пользователя'}")
-            print(f"{Style.BRIGHT}Формат сохранения:{Style.RESET_ALL} {'только IP' if filetype == 'ip' else 'Linux route' if filetype == 'unix' else 'CIDR-нотация' if filetype == 'cidr' else 'Windows route' if filetype == 'win' else 'Mikrotik CLI' if filetype == 'mikrotik' else 'open vpn' if filetype == 'ovpn' else 'Keenetic CLI' if filetype == 'keenetic' else 'Wireguard' if filetype == 'wireguard' else 'спросить у пользователя'}")
+            print(
+                f"{Style.BRIGHT}Сервисы для проверки:{Style.RESET_ALL} {service if service else 'спросить у пользователя'}")
+            print(
+                f"{Style.BRIGHT}Использовать DNS сервер:{Style.RESET_ALL} {dns_server_indices if dns_server_indices else 'спросить у пользователя'}")
+            print(
+                f"{Style.BRIGHT}Количество одновременных запросов к одному DNS серверу:{Style.RESET_ALL} {request_limit}")
+            print(
+                f"{Style.BRIGHT}Фильтрация IP-адресов Cloudflare:{Style.RESET_ALL} {'включена' if cloudflare in ['y', 'yes'] else 'Выключена' if cloudflare in ['n', 'no'] else 'спросить у пользователя'}")
+            print(
+                f"{Style.BRIGHT}Агрегация IP-адресов:{Style.RESET_ALL} {'mix режим /24 (255.255.255.0) + /32 (255.255.255.255)' if subnet == 'mix' else 'до /16 подсети (255.255.0.0)' if subnet == '16' else 'до /24 подсети (255.255.255.0)' if subnet == '24' else 'вЫключена' if subnet in ['n', 'no'] else 'спросить у пользователя'}")
+            print(
+                f"{Style.BRIGHT}Формат сохранения:{Style.RESET_ALL} {'только IP' if filetype == 'ip' else 'Linux route' if filetype == 'unix' else 'CIDR-нотация' if filetype == 'cidr' else 'Windows route' if filetype == 'win' else 'Mikrotik CLI' if filetype == 'mikrotik' else 'open vpn' if filetype == 'ovpn' else 'Keenetic CLI' if filetype == 'keenetic' else 'Wireguard' if filetype == 'wireguard' else 'спросить у пользователя'}")
             if filetype in ['win', 'unix', '']:
-                print(f"{Style.BRIGHT}Шлюз/Имя интерфейса для Windows и Linux route:{Style.RESET_ALL} {gateway if gateway else 'спросить у пользователя'}")
+                print(
+                    f"{Style.BRIGHT}Шлюз/Имя интерфейса для Windows и Linux route:{Style.RESET_ALL} {gateway if gateway else 'спросить у пользователя'}")
             if filetype in ['keenetic', '']:
-                print(f"{Style.BRIGHT}Шлюз/Имя интерфейса для Keenetic CLI:{Style.RESET_ALL} {ken_gateway if ken_gateway else 'спросить у пользователя'}")
+                print(
+                    f"{Style.BRIGHT}Шлюз/Имя интерфейса для Keenetic CLI:{Style.RESET_ALL} {ken_gateway if ken_gateway else 'спросить у пользователя'}")
             if filetype in ['mikrotik', '']:
-                print(f"{Style.BRIGHT}Имя списка для Mikrotik firewall:{Style.RESET_ALL} {mk_list_name if mk_list_name else 'спросить у пользователя'}")
-                print(f"{Style.BRIGHT}'comment=' в Mikrotik firewall:{Style.RESET_ALL} {'вЫключен' if mk_comment == 'off' else 'включен'}")
+                print(
+                    f"{Style.BRIGHT}Имя списка для Mikrotik firewall:{Style.RESET_ALL} {mk_list_name if mk_list_name else 'спросить у пользователя'}")
+                print(
+                    f"{Style.BRIGHT}'comment=' в Mikrotik firewall:{Style.RESET_ALL} {'вЫключен' if mk_comment == 'off' else 'включен'}")
             print(f"{Style.BRIGHT}Сохранить результат в файл:{Style.RESET_ALL} {filename}")
-            print(f"{Style.BRIGHT}Выполнить по завершению:{Style.RESET_ALL} {run_command if run_command else 'не указано'}")
+            print(
+                f"{Style.BRIGHT}Выполнить по завершению:{Style.RESET_ALL} {run_command if run_command else 'не указано'}")
         if localplatform in ['yes', 'y'] or localdns in ['yes', 'y']:
             print(f"\n{red('!!! Включен локальный режим !!!')}")
-            print(f"{Style.BRIGHT}Список сервисов будет загружен из:{Style.RESET_ALL} {'файла platformdb' if localplatform in ['yes', 'y'] else 'сети'}")
-            print(f"{Style.BRIGHT}Список DNS серверов будет загружен из:{Style.RESET_ALL} {'файла dnsdb' if localdns in ['yes', 'y'] else 'сети'}")
+            print(
+                f"{Style.BRIGHT}Список сервисов будет загружен из:{Style.RESET_ALL} {'файла platformdb' if localplatform in ['yes', 'y'] else 'сети'}")
+            print(
+                f"{Style.BRIGHT}Список DNS серверов будет загружен из:{Style.RESET_ALL} {'файла dnsdb' if localdns in ['yes', 'y'] else 'сети'}")
 
         return service, request_limit, filename, cloudflare, filetype, gateway, run_command, dns_server_indices, mk_list_name, subnet, ken_gateway, localplatform, localdns, mk_comment
 
     except Exception as e:
-        print(f"{yellow(f'Ошибка загрузки {cfg_file}:')} {e}\n{Style.BRIGHT}Используются настройки 'по умолчанию'.{Style.RESET_ALL}")
+        print(
+            f"{yellow(f'Ошибка загрузки {cfg_file}:')} {e}\n{Style.BRIGHT}Используются настройки 'по умолчанию'.{Style.RESET_ALL}")
         return '', 20, 'domain-ip-resolve.txt', '', '', '', '', [], '', '', '', '', '', 'off'
 
 
@@ -103,7 +118,8 @@ def gateway_input(gateway):
 # IP шлюза и имя интерфейса для keenetic
 def ken_gateway_input(ken_gateway):
     if not ken_gateway:
-        input_ken_gateway = input(f"Укажите {green('IP шлюза')} или {green('имя интерфейса')} или {green('IP шлюза')} и через пробел {green('имя интерфейса')}: ")
+        input_ken_gateway = input(
+            f"Укажите {green('IP шлюза')} или {green('имя интерфейса')} или {green('IP шлюза')} и через пробел {green('имя интерфейса')}: ")
         return input_ken_gateway.strip() if input_ken_gateway else None
     else:
         return ken_gateway
@@ -329,6 +345,7 @@ def check_include_cloudflare(cloudflare):
                  f"\n{green('yes')} - исключить"
                  f"\n{green('Enter')} - оставить: ").strip().lower() in ['yes', 'y']
 
+
 def check_dns_servers(dns_servers, dns_server_indices):
     # Получение системных DNS серверов
     system_dns_servers = dns.asyncresolver.Resolver().nameservers
@@ -505,7 +522,8 @@ def process_file_format(filename, filetype, gateway, selected_service, mk_list_n
         'keenetic': lambda ip: f"ip route {ip}/{subnet} {ken_gateway} auto !{comment(selected_service)}",
         'cidr': lambda ip: f"{ip}/{subnet}",
         'ovpn': lambda ip: f'push "route {ip} {net_mask}"',
-        'mikrotik': lambda ip: f'/ip/firewall/address-list add list={mk_list_name}' + (f' comment="{comment(selected_service)}"' if mk_comment != "off" else "") + f' address={ip}/{subnet}',
+        'mikrotik': lambda ip: f'/ip/firewall/address-list add list={mk_list_name}' + (
+            f' comment="{comment(selected_service)}"' if mk_comment != "off" else "") + f' address={ip}/{subnet}',
         'wireguard': lambda ip: f"{ip}/{subnet}"
     }
 
@@ -526,13 +544,68 @@ def process_file_format(filename, filetype, gateway, selected_service, mk_list_n
             'keenetic': lambda ip: f"ip route {mix_formatter(ip)} {ken_gateway} auto !{comment(selected_service)}",
             'cidr': lambda ip: f"{mix_formatter(ip)}",
             'ovpn': lambda ip: f'push "route {mix_formatter(ip)}"',
-            'mikrotik': lambda ip: f'/ip/firewall/address-list add list={mk_list_name}' + (f' comment="{comment(selected_service)}"' if mk_comment != "off" else "") + f' address={mix_formatter(ip)}',
+            'mikrotik': lambda ip: f'/ip/firewall/address-list add list={mk_list_name}' + (
+                f' comment="{comment(selected_service)}"' if mk_comment != "off" else "") + f' address={mix_formatter(ip)}',
             'wireguard': lambda ip: f"{mix_formatter(ip)}"
         })
 
     # Запись в файл
     if filetype.lower() in formatters:
         write_file(filename, ips, formatters[filetype.lower()])
+
+
+def changeformat(filename, filetype, subnet):
+    def read_file(filename):
+        try:
+            with open(filename, 'r', encoding='utf-8') as file:
+                return file.readlines()
+        except Exception as e:
+            print(f"Ошибка чтения файла: {e}")
+            return None
+
+    def write_file(filename, ips, formatter):
+        formatted_ips = [formatter(ip.strip()) for ip in ips]
+        with open(filename, 'w', encoding='utf-8') as file:
+            file.write('\n'.join(formatted_ips))
+
+    ips = read_file(filename)
+    if not ips:
+        return
+
+    # обычный формат
+    formatters = {
+        'cidr': lambda ip: f"{ip}/{subnet}",
+    }
+
+    # mix формат
+    if subnet == "mix":
+        mix_formatter = lambda ip: f"{ip.strip()}/24" if ip.endswith('.0') else f"{ip.strip()}/32"
+
+    formatters.update({
+        'cidr': lambda ip: f"{mix_formatter(ip)}",
+    })
+
+    # Запись в файл
+    if filetype.lower() in formatters:
+        write_file(filename, ips, formatters[filetype.lower()])
+
+
+# Функция записи результатов в файлы по сервисам
+async def write_results_to_files(selected_services, filetype, results, subnet):
+    for service, result in zip(selected_services, results):
+        # Формируем имя файла для каждого сервиса
+        filename = f"{service.replace(' ', '_').lower()}.txt"
+        file_path = os.path.join('lists', filename)  # Объединяем путь и имя файла
+
+        with open(file_path, 'w', encoding='utf-8') as file:
+            file.write(result)
+
+        # Группируем IP-адреса в подсети, если нужно
+        subnet = subnet_input(subnet)
+        if subnet != '32':  # Если не '32', вызываем функцию для агрегации
+            group_ips_in_subnets(file_path, subnet)
+
+        changeformat(file_path, filetype, subnet)
 
 
 # Стартуем
@@ -549,7 +622,8 @@ async def main():
 
     # Инициализация настроек из переданного конфигурационного файла
     config_file = args.config
-    (service, request_limit, filename, cloudflare, filetype, gateway, run_command, dns_server_indices, mk_list_name, subnet, ken_gateway, localplatform, localdns, mk_comment) = read_config(config_file)
+    (service, request_limit, filename, cloudflare, filetype, gateway, run_command, dns_server_indices, mk_list_name,
+     subnet, ken_gateway, localplatform, localdns, mk_comment) = read_config(config_file)
 
     # Загрузка списка платформ
     if localplatform in ['yes', 'y']:
@@ -559,10 +633,10 @@ async def main():
         platform_db_url = "https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/main/platformdb"
         urls = await load_urls(platform_db_url)
 
-    # Подхват "custom-dns-list.txt" если существует
+    # Подхват "custom_dns_list.txt" если существует
     local_dns_names = []
-    if os.path.exists('custom-dns-list.txt'):
-        with open('custom-dns-list.txt', 'r', encoding='utf-8') as file:
+    if os.path.exists('custom/custom_dns_list.txt'):
+        with open('custom/custom_dns_list.txt', 'r', encoding='utf-8') as file:
             local_dns_names = [line.strip() for line in file if line.strip()]
 
     # Выбор платформ
@@ -593,12 +667,12 @@ async def main():
     total_domains_processed = [0]
     tasks = []
 
+    # Выполняем задачи для каждого сервиса
     for service in selected_services:
         if service == 'Custom DNS list':
             tasks.append(resolve_dns(service, local_dns_names, selected_dns_servers, cloudflare_ips,
                                      unique_ips_all_services, semaphore, null_ips_count, cloudflare_ips_count,
                                      total_domains_processed, include_cloudflare))
-
         else:
             url_or_file = urls[service]
             dns_names = await load_dns_names(url_or_file)
@@ -608,9 +682,8 @@ async def main():
 
     results = await asyncio.gather(*tasks)
 
-    with open(filename, 'w', encoding='utf-8') as file:
-        for result in results:
-            file.write(result)
+    # Записываем результаты в отдельные файлы
+    await write_results_to_files(selected_services, filetype, results, subnet)
 
     print(f"\n{yellow('Проверка завершена.')}")
     print(f"{Style.BRIGHT}Использовались DNS сервера:{Style.RESET_ALL} " + ', '.join(
@@ -621,20 +694,13 @@ async def main():
     print(f"{Style.BRIGHT}Исключено IP-адресов 'заглушек':{Style.RESET_ALL} {null_ips_count[0]}")
     print(f"{Style.BRIGHT}Разрешено IP-адресов из DNS имен:{Style.RESET_ALL} {len(unique_ips_all_services)}")
 
-    # Группировка IP-адресов в подсети
-    subnet = subnet_input(subnet)
-    if subnet != '32':  # Если не '32', вызываем функцию для агрегации
-        group_ips_in_subnets(filename, subnet)
-
-    process_file_format(filename, filetype, gateway, selected_services, mk_list_name, mk_comment, subnet, ken_gateway)
+    # process_file_format(filename, filetype, gateway, selected_services, mk_list_name, mk_comment, subnet, ken_gateway)
 
     if run_command:
         print("\nВыполнение команды после завершения скрипта...")
         os.system(run_command)
     else:
         print(f"\n{Style.BRIGHT}Результаты сохранены в файл:{Style.RESET_ALL}", filename)
-        if os.name == 'nt':
-            input(f"Нажмите {green('Enter')} для выхода...")
 
 
 if __name__ == "__main__":
