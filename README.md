@@ -6,12 +6,12 @@
 - Запуск в докере. Запрос [Запрос @andrejs82git](https://github.com/Ground-Zerro/DomainMapper/issues/21), [Реализация @MrEagle123](https://github.com/Ground-Zerro/DomainMapper/issues/21#issuecomment-2509565392)
 - Опция в config.ini: не добавлять comment="%SERVICE_NAME%" при сохранении IP-адресов в mikrotik формате. [Запрос @ITNetSystem](https://github.com/Ground-Zerro/DomainMapper/issues/45) 
 - Изменена кодиовка файла результатов на UTF-8 без BOM. [Запрос @Savanture](https://github.com/Ground-Zerro/DomainMapper/issues/54) 
-- [Конвертер маршутов](https://github.com/Ground-Zerro/DomainMapper/tree/main/utilities) как отдельная утилита. [Запрос @Andrey999r](https://github.com/Ground-Zerro/DomainMapper/discussions/43) 
+- [Конвертер маршутов](https://github.com/Ground-Zerro/DomainMapper/tree/develop/utilities) как отдельная утилита. [Запрос @Andrey999r](https://github.com/Ground-Zerro/DomainMapper/discussions/43) 
 - Добавлен сервис Jetbrains. [Запрос @SocketSomeone](https://github.com/Ground-Zerro/DomainMapper/issues/40)
 - Добавлен сервис Discord. [Запрос @AHuMex](https://github.com/Ground-Zerro/DomainMapper/issues/38)
 - [Комбинированный режим объединения IP-адресов в подсеть.](https://github.com/Ground-Zerro/DomainMapper/issues/36)
 - Возможность загрузки списков сервисов и DNS-серверов из локального файла. [Запрос @Noksa](https://github.com/Ground-Zerro/DomainMapper/issues/26) 
-- Вспомагательные [утилиты](https://github.com/Ground-Zerro/DomainMapper/tree/main/utilities) для поиска субдоменов.
+- Вспомагательные [утилиты](https://github.com/Ground-Zerro/DomainMapper/tree/develop/utilities) для поиска субдоменов.
 - Добавлен сервис Twitch. [Запрос @shevernitskiy](https://github.com/Ground-Zerro/DomainMapper/issues/31)
 - Добавлен Yandex DNS сервер. [Запрос @Noksa](https://github.com/Ground-Zerro/DomainMapper/issues/26)
 - Опция в config.ini: Отключить отображение сведений о загруженой конфигурации.
@@ -99,7 +99,7 @@
 Torrent Truckers: platforms/dns-ttruckers.lst
 Search engines: dns-search-engines.txt
 Twitch: platforms/service/dns-twitch.txt
-Adobe: https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/main/platforms/dns-adobe.txt
+Adobe: https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/develop/platforms/dns-adobe.txt
 ```
 
 Для включения загрузки списка DNS-серверов из локального файла `dnsdb`, укажите `localdns = yes` в config.ini.
@@ -153,7 +153,7 @@ arena.openai.com
   <summary>Запуск в Docker (нажать, чтобы открыть)</summary>
 
 ```
-curl -L -s "https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/refs/heads/main/dm-docker.sh" > /tmp/dm-docker.sh && chmod +x /tmp/dm-docker.sh && sh /tmp/dm-docker.sh
+curl -L -s "https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/refs/heads/develop/dm-docker.sh" > /tmp/dm-docker.sh && chmod +x /tmp/dm-docker.sh && sh /tmp/dm-docker.sh
 ```
 </details>
 
@@ -161,7 +161,7 @@ curl -L -s "https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/refs/hea
 <details>
   <summary>Для пользователей Windows, не знающих "как", но кому "очень нужно" (нажать, чтобы открыть)</summary>
 
-- Загляните в директорию [Windows](https://github.com/Ground-Zerro/DomainMapper/tree/main/Windows) репозитория.
+- Загляните в директорию [Windows](https://github.com/Ground-Zerro/DomainMapper/tree/develop/Windows) репозитория.
 </details>
 
 

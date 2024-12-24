@@ -630,7 +630,7 @@ async def main():
         urls = await load_urls_from_file()
 
     else:
-        platform_db_url = "https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/main/platformdb"
+        platform_db_url = "https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/develop/platformdb"
         urls = await load_urls(platform_db_url)
 
     # Подхват "custom_dns_list.txt" если существует
@@ -647,7 +647,7 @@ async def main():
         dns_servers = await load_dns_from_file()
 
     else:
-        dns_db_url = "https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/main/dnsdb"
+        dns_db_url = "https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/develop/dnsdb"
         dns_servers = await load_dns_servers(dns_db_url)
 
     # Выбор DNS-серверов

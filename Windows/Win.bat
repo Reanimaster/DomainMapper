@@ -68,7 +68,7 @@ goto :DownloadMain
 REM Загрузка и запуск main.py
 :DownloadMain
 echo Загрузка Domain Mapper...
-powershell -Command "if ($PSVersionTable.PSVersion.Major -ge 3) {Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/main/main.py' -OutFile 'main.py'} else {Start-BitsTransfer -Source 'https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/main/main.py' -Destination 'main.py'}"
+powershell -Command "if ($PSVersionTable.PSVersion.Major -ge 3) {Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/develop/main.py' -OutFile 'main.py'} else {Start-BitsTransfer -Source 'https://raw.githubusercontent.com/Ground-Zerro/DomainMapper/develop/main.py' -Destination 'main.py'}"
 
 if not exist "main.py" (
     echo Ошибка загрузки Domain Mapper.
